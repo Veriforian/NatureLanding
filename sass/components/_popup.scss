@@ -21,11 +21,19 @@
 		opacity: 0;
 		transform: translate(-50%, -50%) scale(0.25);
 		transition: all 0.5s 0.2s;
+
+		@include respond(phone) {
+			width: 85%;
+		}
 	}
 
 	&__left {
 		width: 33.333333%;
 		display: table-cell;
+
+		@include respond(phone) {
+			display: none;
+		}
 	}
 
 	&__right {
