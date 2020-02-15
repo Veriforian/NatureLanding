@@ -116,7 +116,11 @@
 	}
 	//Nav functionality
 	&__background--visible {
-		transform: scale(50);
+		transform: scale(60);
+
+		@include respond(big-desktop) {
+			transform: scale(80);
+		}
 	}
 
 	&__nav--visible {
