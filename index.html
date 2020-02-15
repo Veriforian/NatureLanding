@@ -16,37 +16,46 @@
 	</head>
 	<body>
 		<div class="navigation">
-			<input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+			<input
+				type="checkbox"
+				class="navigation__checkbox"
+				id="navi-toggle"
+				onclick="naviToggle()"
+			/>
 			<label for="navi-toggle" class="navigation__button">
 				<span class="navigation__icon">&nbsp;</span>
 			</label>
 
-			<div class="navigation__background">&nbsp;</div>
+			<div class="navigation__background navigation__background--hidden">
+				&nbsp;
+			</div>
 
-			<nav class="navigation__nav">
+			<nav class="navigation__nav navigation__nav--hidden">
 				<ul class="navigation__list">
 					<li class="navigation__item">
-						<a href="#about" class="navigation__link"
+						<a onclick="naviToggle()" href="#about" class="navigation__link"
 							><span>01</span>About Natours</a
 						>
 					</li>
 					<li class="navigation__item">
-						<a href="#features" class="navigation__link"
+						<a onclick="naviToggle()" href="#features" class="navigation__link"
 							><span>02</span>Your benefits</a
 						>
 					</li>
 					<li class="navigation__item">
-						<a href="#tours" class="navigation__link"
+						<a onclick="naviToggle()" href="#tours" class="navigation__link"
 							><span>03</span>Popular tours</a
 						>
 					</li>
 					<li class="navigation__item">
-						<a href="#stories" class="navigation__link"
+						<a onclick="naviToggle()" href="#stories" class="navigation__link"
 							><span>04</span>Stories</a
 						>
 					</li>
 					<li class="navigation__item">
-						<a href="#book" class="navigation__link"><span>05</span>Book now</a>
+						<a onclick="naviToggle()" href="#book" class="navigation__link"
+							><span>05</span>Book now</a
+						>
 					</li>
 				</ul>
 			</nav>
@@ -216,7 +225,9 @@
 										<p class="card__price-only">Only</p>
 										<p class="card__price-value">$297</p>
 									</div>
-									<a href="#popup" class="btn btn--white">Book Now</a>
+									<button onclick="popupToggle()" class="btn btn--white">
+										Book Now
+									</button>
 								</div>
 							</div>
 						</div>
@@ -248,7 +259,9 @@
 										<p class="card__price-only">Only</p>
 										<p class="card__price-value">$497</p>
 									</div>
-									<a href="#popup" class="btn btn--white">Book Now</a>
+									<button onclick="popupToggle()" class="btn btn--white">
+										Book Now
+									</button>
 								</div>
 							</div>
 						</div>
@@ -280,7 +293,9 @@
 										<p class="card__price-only">Only</p>
 										<p class="card__price-value">$897</p>
 									</div>
-									<a href="#popup" class="btn btn--white">Book Now</a>
+									<button onclick="popupToggle()" class="btn btn--white">
+										Book Now
+									</button>
 								</div>
 							</div>
 						</div>
@@ -489,8 +504,8 @@
 			</div>
 		</footer>
 
-		<div class="popup" id="popup">
-			<div class="popup__content">
+		<div class="popup" id="popup" onclick="popupToggle()">
+			<div onclick="popupToggle()" class="popup__content">
 				<div class="popup__left">
 					<img src="img/nat-8.jpg" alt="Person on a tour" class="popup__img" />
 					<img src="img/nat-9.jpg" alt="Person on a tour" class="popup__img" />
@@ -499,7 +514,7 @@
 				<div class="popup__border-mediafix"></div>
 
 				<div class="popup__right">
-					<a href="#tours" class="popup__close">&times;</a>
+					<button onclick="popupToggle()" class="popup__close">&times;</button>
 					<h2 class="heading-secondary u-margin-bottom-small">
 						Start booking now
 					</h2>
@@ -520,6 +535,48 @@
 				</div>
 			</div>
 		</div>
+
+		<script>
+			function naviToggle() {
+				const background = document.querySelector('.navigation__background');
+				const nav = document.querySelector('.navigation__nav');
+				if (
+					background.className ===
+					'navigation__background navigation__background--hidden'
+				) {
+					background.setAttribute(
+						'class',
+						'navigation__background navigation__background--visible'
+					);
+					nav.setAttribute('class', 'navigation__nav navigation__nav--visible');
+				} else if (
+					background.className ===
+					'navigation__background navigation__background--visible'
+				) {
+					background.setAttribute(
+						'class',
+						'navigation__background navigation__background--hidden'
+					);
+					nav.setAttribute('class', 'navigation__nav navigation__nav--hidden');
+				}
+			}
+
+			function popupToggle() {
+				const popupWindow = document.querySelector('.popup');
+				const popupContent = document.querySelector('.popup__content');
+
+				if (popupWindow.className === 'popup') {
+					popupWindow.setAttribute('class', 'popup popup--visible');
+					popupContent.setAttribute(
+						'class',
+						'popup__content popup__content--visible'
+					);
+				} else {
+					popupWindow.setAttribute('class', 'popup');
+					popupContent.setAttribute('class', 'popup__content');
+				}
+			}
+		</script>
 	</body>
 </html>
 
